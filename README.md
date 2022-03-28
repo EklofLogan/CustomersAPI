@@ -11,4 +11,9 @@ Created a table called 'Customer' which contains the following columns
 
 Exceptions are handled when a duplicate customer is added to the database, or when a customer with an id does not exist.
 
-## 
+## Capabilities
+Contains functionality for the following features.
+* Creating new customers via a post request
+* Finding a customer by its id
+* Listing all customers in the database
+* Deleting a customer by id
