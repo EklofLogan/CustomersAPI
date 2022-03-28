@@ -6,16 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="CustomersAPI" />
+        <module name="eklof" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="CustomersAPI" target="11" />
+      <module name="CustomerAPI" target="11" />
+      <module name="eklof" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="CustomersAPI" options="-parameters" />
+      <module name="CustomerAPI" options="-parameters" />
+      <module name="eklof" options="-parameters" />
     </option>
   </component>
 </project>
