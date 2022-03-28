@@ -1,5 +1,6 @@
 package com.eklof.CustomersAPI;
 
+import com.eklof.CustomersAPI.exceptions.DuplicateCustomerException;
 import com.eklof.CustomersAPI.exceptions.NoSuchCustomerException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,5 +22,13 @@ public class CustomersAPIAdvisor extends ResponseEntityExceptionHandler {
         body.put("message", "Customer not found");
 
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(DuplicateCustomerException.class)
+    public ResponseEntity<Object> handleDuplicateCustomerException(DuplicateCustomerException ex, WebRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now());
+        body.put("message", "Customer with this information already exists");
+
+        return new ResponseEntity<>(body, HttpStatus.NOT_ACCEPTABLE);
     }
 }
