@@ -3,6 +3,7 @@ package com.eklof.CustomersAPI.controllers;
 import com.eklof.CustomersAPI.models.Customer;
 import com.eklof.CustomersAPI.services.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -11,8 +12,8 @@ public class CustomerController {
     @Autowired
     private ICustomerService customerService;
 
-    @GetMapping("/add/{firstName}/{lastName}/{email}/{phoneNumber}")
-    public Customer addCustomer(@PathVariable String firstName,@PathVariable String lastName,@PathVariable String email,@PathVariable String phoneNumber) {
+    @PostMapping()
+    public Customer addCustomer(@RequestParam String firstName,@RequestParam String lastName,@RequestParam String email,@RequestParam String phoneNumber) {
         return customerService.addCustomer(firstName, lastName, email, phoneNumber);
     }
 
@@ -24,6 +25,6 @@ public class CustomerController {
         return customerService.findCustomerById(id);
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCustomerById(@PathVariable Integer id) { customerService.deleteCustomer(id); }
 }

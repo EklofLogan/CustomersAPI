@@ -1,5 +1,6 @@
 package com.eklof.CustomersAPI.services;
 
+import com.eklof.CustomersAPI.exceptions.NoSuchCustomerException;
 import com.eklof.CustomersAPI.models.Customer;
 import com.eklof.CustomersAPI.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ public class CustomerService implements ICustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
+    private Object NoSuchCustomerException;
 
     @Override
     public Iterable<Customer> getCustomers() {
@@ -18,6 +20,9 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer findCustomerById(Integer id) {
+        if (!customerRepository.existsById(id)) {
+            throw new NoSuchCustomerException(id);
+        }
         return customerRepository.findCustomerById(id);
     }
 
